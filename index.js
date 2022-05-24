@@ -276,7 +276,7 @@ app.patch('/updatePayment/:id',async(req,res) =>{
  
   }
   finally{
-   //  awite client .close() a;
+   //  awite client .close();
   }
 }
 run().catch(console.dir);
