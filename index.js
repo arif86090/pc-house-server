@@ -50,7 +50,7 @@ async function run(){
     const VerifyAdmin = async (req,res,next)=>{
     const requester=req.decoded.email;
     const requesterSccount=await userCollection.findOne({email:requester})
-    console.log(requesterSccount);
+  
     if(requesterSccount.role=== 'admin'){
       next();
     }
