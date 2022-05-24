@@ -24,7 +24,7 @@ function verifyJwt(req,res,next){
  const token =authheader.split(' ')[1];
    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,decoded) =>{
      if(err){
-       return res.status(403).send({message:'Forbined accss'});
+       return res.status(403).send({message:'Forbined access'});
      }
      console.log('decodeed',decoded);
      req.decoded=decoded;
