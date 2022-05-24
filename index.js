@@ -53,6 +53,7 @@ async function run(){
   
     if(requesterSccount.role=== 'admin'){
       next();
+
     }
     else{
       res.status(403).send({message:'Forbidden'});
@@ -275,7 +276,7 @@ app.patch('/updatePayment/:id',async(req,res) =>{
  
   }
   finally{
-   //  awite client .close();
+   //  awite client .close() a;
   }
 }
 run().catch(console.dir);
