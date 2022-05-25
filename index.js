@@ -253,8 +253,36 @@ app.patch('/updatePayment/:id',async(req,res) =>{
   })
 
 
+  app.put('/profiledata/:email',async(req,res)=>{
+    const email=req.params.email;
+    const filter={email:email};
+    const newdata=req.body;
+    const opations={upsert:true};
+    const updateDoc={
+      $set:newdata,
+    };
+    const result=await userCollection.updateOne(filter,updateDoc,opations);
+    res.send(result);
+  })
 
 
+  app.get('/profiledata',verifyJwt,async(req,res)=>{
+    const decodedEmail=req.decoded.email;
+    // from ul 
+    const email=req.query.email;
+    console.log('aaa',email);
+    if(email === decodedEmail){
+        // cmper mongo = ul
+        const query={email:email};
+        const booking=await userCollection.find(query).toArray();
+        console.log('aaa',booking);
+        res.send(booking);
+    }
+    else{
+      res.status(403).send({message:'forbidden accces!'})
+    }
+  
+  })
 
 //Login user
  app.put('/user/:email',async(req,res)=>{
